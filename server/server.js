@@ -1,4 +1,5 @@
 import cors from "cors";
+import "dotenv/config.js";
 import express from "express";
 import morgan from "morgan";
 import connect from "../server/database/conn.js";
@@ -6,7 +7,7 @@ import router from "./router/route.js";
 
 const app = express();
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 /** Middleware */
 app.use(express.json({ limit: "50mb" }));

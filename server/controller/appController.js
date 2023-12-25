@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import otpgenerator from "otp-generator";
-import ENV from "../config.js";
 import UserModel from "../model/User.model.js";
 
 /** POST: http://localhost:8080/api/register */
@@ -78,7 +77,7 @@ export async function login(req, res) {
 
           const access_token = jwt.sign(
             { userid: user._id, username: user.username },
-            ENV.JWT_SECRET,
+            process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
           return res.status(200).json({

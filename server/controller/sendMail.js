@@ -1,12 +1,11 @@
 import Mailgen from "mailgen";
 import nodemailer from "nodemailer";
-import ENV from "../config.js";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: ENV.MAIL,
-    pass: ENV.PASSWORD,
+    user: process.env.MAIL,
+    pass: process.env.PASSWORD,
   },
 });
 
@@ -33,7 +32,7 @@ export const send = async (req, res) => {
     const emailBody = MailGenerator.generate(email);
 
     await transporter.sendMail({
-      from: ENV.MAIL,
+      from: process.env.MAIL,
       to: userEmail,
       subject: subject || "Signup Successful",
       html: emailBody,

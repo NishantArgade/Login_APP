@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import ENV from "../config.js";
 // import UserModel from "../model/User.model.js";
 
 const auth = async (req, res, next) => {
@@ -7,7 +6,7 @@ const auth = async (req, res, next) => {
     let token = req.headers.authorization.split(" ")[1];
     if (!token) return next(new Error("Invalid authorization"));
 
-    const verifyUser = jwt.verify(token, ENV.JWT_SECRET);
+    const verifyUser = jwt.verify(token, process.env.JWT_SECRET);
     if (!verifyUser) return next(new Error("Invalide authorization"));
 
     req.user = verifyUser;
