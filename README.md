@@ -42,15 +42,15 @@ Install Dependencies:
 npm i
 ```
 
-Add config.js file at root in the server folder :
+Add .env file at root in the server folder :
 
 ```
-export default {
-  JWT_SECRET: <your-jwt-secret>,
-  MAIL: <your-mail-address>,
-  PASSWORD: <your-mail-password>,
-  ATLAS_DB_URL: <your-mongodb-url>
-};
+  PORT=<port>
+  JWT_SECRET=<your-jwt-secret>,
+  MAIL=<your-mail-address>,
+  PASSWORD=<your-mail-password>,
+  ATLAS_DB_URL=<your-mongodb-url>
+
 ```
 
 Run Frontend:
